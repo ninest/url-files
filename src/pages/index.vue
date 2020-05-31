@@ -35,7 +35,7 @@ export default {
     return {
       title: '',
       content: '',
-      password: 'password',
+      password: '',
       longUrl: '',
       // url: ''
     }
@@ -63,7 +63,7 @@ export default {
       // this.url = `${location}${tag}`;
     },
     setPassword () {
-      this.password = prompt('Enter a password: ', 'password')
+      this.password = prompt('Enter a password: ', '')
     },
     copyLink () {
       const $link = document.getElementById('link');

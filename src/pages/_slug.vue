@@ -33,10 +33,16 @@ export default {
 
     try {
       // password is the default password
-      this.original = this.decrypt(cipher, 'password')
+      this.original = this.decrypt(cipher, '')
     } catch {
       // if that doesn't work, ask for the password
-      this.original = this.decrypt(cipher, prompt('Enter the password:'))
+      const password = prompt('Enter the password:');
+
+      try {
+        this.original = this.decrypt(cipher, password);
+      } catch {
+        alert('Incorrect password');
+      }
     }
   }
 }
