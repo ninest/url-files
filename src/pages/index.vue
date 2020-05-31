@@ -13,8 +13,10 @@
       <button v-on:click.prevent="save">save</button>
     </form>
 
-    <div v-if="url != ''">
-      {{ url }}
+    <div v-if="longUrl != ''">
+      <div>
+        {{ longUrl}}
+      </div>
     </div>
 
   </Default>
@@ -26,23 +28,28 @@ export default {
     return {
       content: '',
       password: '',
-      url: ''
+      longUrl: '',
+      // url: ''
     }
   },
   methods: {
     async save () {
-      const ciphertext = this.encrypt(this.content, this.password);
+      // const ciphertext = this.encrypt(this.content, this.password);
+      const cipher = this.encrypt({
+        content: this.content
+      }, this.password)
       // const original = this.decrypt(ciphertext, this.password);
+      const escaped = btoa(cipher)
+      this.longUrl = `localhost:3000/${escaped}`
+      // const tinyurl = await this.shortenUrl(this.longUrl);
+      // const tag = tinyurl.split('tinyurl.com/')[1]
 
-      const tinyurl = await this.shortenUrl(`https://url-file.ninest/${ciphertext}`);
-      const tag = tinyurl.split('tinyurl.com/')[1]
-
-      const location = document.location.href;
-      // if not ends in '/', add '/' to end
-      if (!location.endsWith('/')) {
-        location = `${location}/`
-      }
-      this.url = `${location}${tag}`;
+      // const location = document.location.href;
+      // // if not ends in '/', add '/' to end
+      // if (!location.endsWith('/')) {
+      //   location = `${location}/`
+      // }
+      // this.url = `${location}${tag}`;
     }
   },
 }

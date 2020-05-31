@@ -6,7 +6,16 @@ const shortenUrl = async (url) => {
   return text;
 }
 
+const getFullUrl = async (id) => {
+  const tinyurl = `https://tinyurl.com/${id}`
+  console.log(tinyurl);
+  const response = await fetch(tinyurl);
+  return response;
+}
+
 Vue.prototype.shortenUrl = shortenUrl;
+Vue.prototype.getFullUrl = getFullUrl;
 export default ({ app }, injext) => {
   app.shortenUrl = shortenUrl;
+  app.getFullUrl = getFullUrl;
 }

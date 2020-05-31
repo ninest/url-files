@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import { AES, enc } from 'crypto-js';
 
-const encrypt = (text, password) => {
-  return AES.encrypt(text, password).toString();
+const encrypt = (obj, password) => {
+  return AES.encrypt(JSON.stringify(obj), password).toString();
 }
 
-const decrypt = (ciphertext, password) => {
-  const bytes = AES.decrypt(ciphertext, password);
-  return bytes.toString(enc.Utf8);
+const decrypt = (cipherObject, password) => {
+  const bytes = AES.decrypt(cipherObject, password);
+  return JSON.parse(bytes.toString(enc.Utf8));
 }
 
 Vue.prototype.encrypt = encrypt;
