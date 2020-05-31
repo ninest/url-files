@@ -19,4 +19,8 @@ body {
   @include mobile-screen {
     --page-hor-p: 2em;
   }
+
+
+  // colors
+  --light-gray: #aaa;
 }

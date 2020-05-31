@@ -9,4 +9,12 @@ textarea {
   border: none;
   // padding: var(--main-p) 0;
   padding: 0 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea {
+  height: 90vh;
 }

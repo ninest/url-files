@@ -28,8 +28,14 @@ export default {
   },
   mounted() {
     const cipher = atob(this.escaped);
-    this.original = this.decrypt(cipher, 'password')
-    console.log(this.original);
+
+    try {
+      // password is the default password
+      this.original = this.decrypt(cipher, 'password')
+    } catch {
+      // if that doesn't work, ask for the password
+      this.original = this.decrypt(cipher, prompt('Enter the password:'))
+    }
   }
 }
 </script>

@@ -2,6 +2,15 @@
   <Default>
     <header>
       <h1>File URL</h1>
+
+      <div class="right">
+        <button @click="setPassword">set password</button>
+
+        <div v-if="longUrl != ''" class="right">
+          <input class="link" id="link" type="text" :value="longUrl">
+          <button @click="copyLink">copy link</button>
+      </div>
+      </div>
     </header>
 
     <main>
@@ -14,18 +23,7 @@
           <label for="content">content:</label>
           <textarea v-model="content" name="content" placeholder="Write your document ..."></textarea>
         </div>
-        <div>
-          <label for="password">password:</label>
-          <input v-model="password" name="password" type="text" placeholder="Enter a password ...">
-        </div>
-        <button v-on:click.prevent="save">save</button>
       </form>
-
-      <div v-if="longUrl != ''">
-        <div>
-          {{ longUrl}}
-        </div>
-      </div>
     </main>
 
   </Default>
@@ -63,19 +61,59 @@ export default {
       // const tag = tinyurl.split('tinyurl.com/')[1]
 
       // this.url = `${location}${tag}`;
+    },
+    setPassword () {
+      this.password = prompt('Enter a password: ', 'password')
+    },
+    copyLink () {
+      const $link = document.getElementById('link');
+      $link.style.display = 'block';
+      $link.select();
+
+      try {
+        const success = document.execCommand('copy');
+      } catch (err) {
+        prompt('Copy the text', this.longUrl);
+      }
+
+      $link.style.display = 'none';
     }
   },
+  watch: {
+    title() { this.save(); },
+    content() { this.save(); },
+    password() { this.save(); }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 header {
   padding: var(--dense-p) var(--page-hor-p);
+  display: flex;
+
+  justify-content: space-between;
+
+
   h1 {
     font-size: 1.1em;
     margin:0;
   };
-  border-bottom: 1px solid black;
+
+  .right {
+    display: flex;
+
+    button {
+      white-space: nowrap;
+    }
+
+    .link {
+      // hidden, only required to copy link
+      display: none;
+    }
+  }
+
+  border-bottom: 1px solid var(--light-gray);
 }
 
 form {

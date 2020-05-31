@@ -10,6 +10,7 @@
 @import '~/assets/styles/inputs.scss';
 
 .default-layout {
-  
+  position: relative;
+  min-height: 100vh;
 }
 </style>
