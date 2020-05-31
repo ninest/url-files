@@ -1,0 +1,23 @@
+{
+  "name": "url-files",
+  "version": "1.0.0",
+  "description": "Save information in a URL",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.0.0",
+    "nuxt": "^2.12.2"
+  },
+  "devDependencies": {
+    "@nuxt/components": "^0.3.1",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  }
+}
