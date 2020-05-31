@@ -2,7 +2,9 @@
   <Default>
     <main>
       <article>
-        <h1 v-html="md.render(original.title)"></h1>
+        <h1>
+          {{ original.title }}
+        </h1>
         <div v-html="md.render(original.content)" class="content"></div>
       </article>
     </main>
@@ -39,3 +41,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+main {
+  padding: var(--main-p) var(--page-hor-p);
+
+  article {
+    h1 {
+      font-size: 3em;
+      margin-bottom: var(--dense-p);
+      border-bottom: 1px solid var(--light-gray);
+    }
+  }
+}
+</style>
