@@ -1,0 +1,12 @@
+label {
+  display: block;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  border: none;
+  // padding: var(--main-p) 0;
+  padding: 0 0;
+}

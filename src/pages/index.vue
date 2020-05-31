@@ -1,27 +1,32 @@
 <template>
   <Default>
-    <h1>File URL</h1>
-    <form>
-      <div>
-        <label for="title">title:</label>
-        <input v-model="title" name="title" type="text">
-      </div>
-      <div>
-        <label for="content">content:</label>
-        <textarea v-model="content" name="content"></textarea>
-      </div>
-      <div>
-        <label for="password">password:</label>
-        <input v-model="password" name="password" type="text">
-      </div>
-      <button v-on:click.prevent="save">save</button>
-    </form>
+    <header>
+      <h1>File URL</h1>
+    </header>
 
-    <div v-if="longUrl != ''">
-      <div>
-        {{ longUrl}}
+    <main>
+      <form>
+        <div>
+          <label for="title">title:</label>
+          <input v-model="title" class="title" name="title" type="text" placeholder="Enter a title ...">
+        </div>
+        <div>
+          <label for="content">content:</label>
+          <textarea v-model="content" name="content" placeholder="Write your document ..."></textarea>
+        </div>
+        <div>
+          <label for="password">password:</label>
+          <input v-model="password" name="password" type="text" placeholder="Enter a password ...">
+        </div>
+        <button v-on:click.prevent="save">save</button>
+      </form>
+
+      <div v-if="longUrl != ''">
+        <div>
+          {{ longUrl}}
+        </div>
       </div>
-    </div>
+    </main>
 
   </Default>
 </template>
@@ -62,3 +67,28 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+header {
+  padding: var(--dense-p) var(--page-hor-p);
+  h1 {
+    font-size: 1.1em;
+    margin:0;
+  };
+  border-bottom: 1px solid black;
+}
+
+form {
+  padding: 1em var(--page-hor-p);
+  label {
+    display: none;
+  }
+
+  input.title {
+    font-size: 2em;
+    font-weight: 900;
+    margin-top: var(--dense-p);
+    margin-bottom: var(--main-p);
+  }
+}
+</style>

@@ -1,0 +1,22 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+}
+* {
+  box-sizing: border-box;
+}
+
+
+:root {
+  --main-p: 1em;
+  --dense-p: 0.5em;
+
+  --page-hor-p: 23%;
+  --page-vert-p: 2em;
+  
+  @include mobile-screen {
+    --page-hor-p: 2em;
+  }
+}

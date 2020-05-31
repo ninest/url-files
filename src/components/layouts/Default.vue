@@ -6,12 +6,10 @@
 
 <style lang="scss">
 @import '~/assets/styles/normalize.css';
+@import '~/assets/styles/main.scss';
+@import '~/assets/styles/inputs.scss';
 
 .default-layout {
-  margin: 2em 23%;
-
-  @include mobile-screen {
-    margin: 2em;
-  }
+  
 }
 </style>
