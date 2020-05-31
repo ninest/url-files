@@ -12,6 +12,11 @@
       </div>
       <button v-on:click.prevent="save">save</button>
     </form>
+
+    <div v-if="url != ''">
+      {{ url }}
+    </div>
+
   </Default>
 </template>
 
@@ -21,12 +26,23 @@ export default {
     return {
       content: '',
       password: '',
+      url: ''
     }
   },
   methods: {
-    save() {
-      
-      console.log(this.content, this.password)
+    async save () {
+      const ciphertext = this.encrypt(this.content, this.password);
+      // const original = this.decrypt(ciphertext, this.password);
+
+      const tinyurl = await this.shortenUrl(`https://url-file.ninest/${ciphertext}`);
+      const tag = tinyurl.split('tinyurl.com/')[1]
+
+      const location = document.location.href;
+      // if not ends in '/', add '/' to end
+      if (!location.endsWith('/')) {
+        location = `${location}/`
+      }
+      this.url = `${location}${tag}`;
     }
   },
 }
