@@ -3,12 +3,16 @@
     <h1>File URL</h1>
     <form>
       <div>
+        <label for="title">title:</label>
+        <input v-model="title" name="title" type="text">
+      </div>
+      <div>
         <label for="content">content:</label>
         <textarea v-model="content" name="content"></textarea>
       </div>
       <div>
         <label for="password">password:</label>
-        <input v-model="password" name="text" type="password">
+        <input v-model="password" name="password" type="text">
       </div>
       <button v-on:click.prevent="save">save</button>
     </form>
@@ -26,8 +30,9 @@
 export default {
   data() {
     return {
+      title: '',
       content: '',
-      password: '',
+      password: 'password',
       longUrl: '',
       // url: ''
     }
@@ -36,19 +41,22 @@ export default {
     async save () {
       // const ciphertext = this.encrypt(this.content, this.password);
       const cipher = this.encrypt({
+        title: this.title,
         content: this.content
       }, this.password)
       // const original = this.decrypt(ciphertext, this.password);
       const escaped = btoa(cipher)
-      this.longUrl = `localhost:3000/${escaped}`
+
+      const location = document.location.href;
+      // if not ends in '/', add '/' to end
+      if (!location.endsWith('/')) {
+        location = `${location}/`
+      }
+
+      this.longUrl = `${location}${escaped}`
       // const tinyurl = await this.shortenUrl(this.longUrl);
       // const tag = tinyurl.split('tinyurl.com/')[1]
 
-      // const location = document.location.href;
-      // // if not ends in '/', add '/' to end
-      // if (!location.endsWith('/')) {
-      //   location = `${location}/`
-      // }
       // this.url = `${location}${tag}`;
     }
   },

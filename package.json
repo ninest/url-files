@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^4.0.0",
+    "markdown-it": "^11.0.0",
     "nuxt": "^2.12.2"
   },
   "devDependencies": {
