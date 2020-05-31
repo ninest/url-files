@@ -10,11 +10,17 @@ export default {
   srcDir: 'src/',
   loading: { color: '#000000' },
   buildModules: [
+    '@nuxtjs/style-resources',
     '@nuxt/components' 
   ],
   components: true,
   plugins: [
     '~/plugins/encryption.js',
     '~/plugins/tinyurl.js',
-  ]
+  ],
+  styleResources: {
+    scss: [
+      'assets/styles/screen.scss',
+    ]
+  },
 }

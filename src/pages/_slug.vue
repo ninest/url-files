@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <Default>
     <main>
       <article>
         <h1 v-html="md.render(original.title)"></h1>
         <div v-html="md.render(original.content)" class="content"></div>
       </article>
     </main>
-  </div>
+  </Default>
 </template>
 
 <script>
