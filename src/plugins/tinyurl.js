@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 const getTinyId = async (url) => {
-  const response = await fetch(`http://tinyurl.com/api-create.php?url=${url}`);
+  const response = await fetch(`https://tinyurl.com/api-create.php?url=${url}`);
   const text = await response.text();
   return text.split('tinyurl.com/')[1];
 }
