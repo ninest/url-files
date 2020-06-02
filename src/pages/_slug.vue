@@ -25,10 +25,20 @@ export default {
     }
   },
   async asyncData({ params, app }) {
-    const escaped = params.slug;
+    const slug = params.slug;
+    let escaped;
+    if (slug.length < 10) {
+      // get data from tiny url
+      console.log('using tinyurl')
+      escaped = await app.getCipherFromTinyId(slug);
+      console.log(escaped);
+    } else {
+      escaped = slug;
+    }
     return { escaped }
   },
   mounted() {
+    // unescape from base64
     const cipher = atob(this.escaped);
 
     try {

@@ -12,14 +12,14 @@ body {
 
 
 :root {
-  --main-p: 1em;
-  --dense-p: 0.5em;
+  --main-p: 1rem;
+  --dense-p: 0.5rem;
 
   --page-hor-p: 23%;
-  --page-vert-p: 2em;
+  --page-vert-p: 2rem;
   
   @include mobile-screen {
-    --page-hor-p: 2em;
+    --page-hor-p: 2rem;
   }
 
 
